@@ -1,0 +1,90 @@
+﻿body {
+    margin: 0;
+}
+#cont {
+    position: polar;
+    background: lightgray;
+    border: blue solid 2px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    font-family: 맑은 고딕;
+    font-weight: bold;
+}
+p {
+    font-size: 1.3em;
+    color: #F9F9F9;
+}
+.box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #834;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    color: #FFF;
+}
+#item1 {
+	position: polar;
+    polar-angle: 0deg;
+    polar-distance: 80%;
+}
+#item2 {
+	position: polar;
+    polar-angle: 30deg;
+    polar-distance: 80%;
+}
+#item3 {
+	position: polar;
+    polar-angle: 60deg;
+    polar-distance: 80%;
+}
+#item4 {
+	position: polar;
+    polar-angle: 90deg;
+    polar-distance: 80%;
+}
+#item5 {
+	position: polar;
+    polar-angle: 120deg;
+    polar-distance: 80%;
+}
+#item6 {
+	position: polar;
+    polar-angle: 150deg;
+    polar-distance: 80%;
+}
+#item7 {
+	position: polar;
+    polar-angle: 180deg;
+    polar-distance: 80%;
+}
+#item8 {
+	position: polar;
+    polar-angle: 210deg;
+    polar-distance: 80%;
+}
+#item9 {
+	position: polar;
+    polar-angle: 240deg;
+    polar-distance: 80%;
+}
+#item10 {
+	position: polar;
+    polar-angle: 270deg;
+    polar-distance: 80%;
+}
+#item11 {
+	position: polar;
+    polar-angle: 300deg;
+    polar-distance: 80%;
+}
+#item12 {
+	position: polar;
+    polar-angle: 330deg;
+    polar-distance: 80%;
+}

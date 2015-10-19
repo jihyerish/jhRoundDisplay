@@ -1,0 +1,82 @@
+﻿body {
+    margin: 0;
+}
+#cont {    
+    background: #000000;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+	overflow: hidden;
+}
+p {
+    font-size: 1.3em;
+    color: #F9F9F9;
+}
+.box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+	width: 50px;
+	height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+	background-position: 0px 0px;
+}
+#item1 {
+	position: polar;
+    polar-angle: -30deg;
+    polar-distance: 80%;
+	polar-orientation: center;
+	background-image: url(assets/new.png);
+}
+#item2 {
+	position: polar;
+    polar-angle: -15deg;
+    polar-distance: 80%;
+	polar-orientation: center;
+	background-image: url(assets/profile.png);
+}
+#item3 {
+	position: polar;
+    polar-angle: 0deg;
+    polar-distance: 80%;
+	polar-orientation: center;
+	background-size: 50px 50px;
+	background-image: url(assets/img.png);
+}
+#item4 {
+	position: polar;
+    polar-angle: 15deg;
+    polar-distance: 80%;
+	polar-orientation: center;
+	background-image: url(assets/msg.png);
+}
+#item5 {
+	position: polar;
+    polar-angle: 30deg;
+    polar-distance: 80%;
+	polar-orientation: center;
+	background-image: url(assets/globe.png);
+}
+#item6 {
+	position: polar;
+    polar-angle: 165deg;
+    polar-distance: 80%;
+	polar-orientation: counter-center;
+	background-image: url(assets/video.png);
+}
+#item7 {
+	position: polar;
+    polar-angle: 180deg;
+    polar-distance: 80%;
+	polar-orientation: counter-center;
+	background-image: url(assets/picture.png);
+}
+#item8 {
+	position: polar;
+    polar-angle: 195deg;
+    polar-distance: 80%;
+	polar-orientation: counter-center;
+	background-image: url(assets/like.png);
+}

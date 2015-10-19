@@ -1,0 +1,99 @@
+﻿body {
+    margin: 0;
+}
+#cont {    
+    position: absolute;
+    top: 0px;
+    left: 0px;
+	background: #F6D8CE;
+    border: #F5A9A9 solid 2px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+}
+p {
+    font-size: 1.3em;
+    color: #F9F9F9;
+}
+.box {    
+	position: absolute;
+    background: #B4045F;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    color: #FFF;
+}
+#item1 {
+    position: polar;
+	polar-angle: 0deg;
+    polar-distance: 100%;
+	polar-anchor: left 50% top 0px;
+}
+#item2 {
+    position: polar;
+    polar-angle: 30deg;
+    polar-distance: 100%;
+	polar-anchor: right top;
+}
+#item3 {
+	position: polar;
+    polar-angle: 60deg;
+    polar-distance: 100%;	
+	polar-anchor: right top;
+}
+#item4 {
+	position: polar;
+    polar-angle: 90deg;
+    polar-distance: 100%;	
+	polar-anchor: right center;
+}
+#item5 {
+	position: polar;
+    polar-angle: 120deg;
+    polar-distance: 100%;
+	polar-anchor: right bottom;
+}
+#item6 {
+	position: polar;
+    polar-angle: 150deg;
+    polar-distance: 100%;
+	polar-anchor: right bottom;
+}
+#item7 {
+	position: polar;
+    polar-angle: 180deg;
+    polar-distance: 100%;
+	polar-anchor: center bottom;
+}
+#item8 {
+	position: polar;
+    polar-angle: 210deg;
+    polar-distance: 100%;
+	polar-anchor: left bottom;
+}
+#item9 {
+	position: polar;
+    polar-angle: 240deg;
+    polar-distance: 100%;
+	polar-anchor: left bottom;
+}
+#item10 {
+	position: polar;
+    polar-angle: 270deg;
+    polar-distance: 100%;
+	polar-anchor: left center;
+}
+#item11 {
+	position: polar;
+    polar-angle: 300deg;
+    polar-distance: 100%;
+	polar-anchor: left top;
+}
+#item12 {
+	position: polar;
+    polar-angle: 330deg;
+    polar-distance: 100%;
+	polar-anchor: left top;
+}

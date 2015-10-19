@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Media Queries Extension (device-radius) </title>
+    <link media="screen and (max-device-radius: 49%)" rel="stylesheet" href="rectangle_clock.css" />
+    <link media="screen and (min-device-radius: 50%)" rel="stylesheet" href="round_clock.css" />
+    <script src="../../src/css-common.js"></script>
+    <script src="../../src/css-device-radius.js"></script>
+    <script>
+        window.addEventListener("load", function() {
+            window.setInterval(function() {
+                var elements = document.querySelector("#second");
+                if (elements.style.color != "rgb(255, 255, 255)") {
+                    elements.style.color = "rgb(255, 255, 255)";
+                } else {
+                    elements.style.color = "rgb(90, 90, 90)";
+                }
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="layer">
+            <div class="inset">
+                <div id="date">2015/02/28 (SAT)</div>
+                <div id="time">10<div id="second">:</div>11</div>
+                <div id="weather"><img src="cloud.jpg" /></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

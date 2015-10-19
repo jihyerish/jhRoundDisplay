@@ -1,0 +1,41 @@
+﻿* {
+    margin: 0;
+}
+.layer {
+    display: inline-block;
+    background: #FAFAFA;
+    width: 300px;
+    height: 300px;
+    border: 15px #AAA solid;
+    vertical-align: top;
+    text-align: center;
+    border-radius: 50%;
+}
+.inset {
+    display: inline-block;
+    border: 2px #AAA solid;
+    width: 285px;
+    height: 285px;
+    margin: 5px;
+    border-radius: 50%;
+}
+#date {
+    font-size: 20px;
+    font-family: 맑은 고딕;
+    font-weight: bold;
+    color: #888;
+    margin-top: 40px;
+}
+#time {
+    margin-top: 45px;
+    font-size: 50px;
+    color: #555
+}
+#second {
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 5px;
+}
+#weather {
+    margin-top: 40px;
+}

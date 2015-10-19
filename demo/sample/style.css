@@ -1,0 +1,31 @@
+﻿body {
+    margin: 0;
+}
+#cont {
+    position: relative;
+    border: 1px solid red;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: pink;
+}
+#main {
+    font-family: 맑은 고딕;
+    font-size: 15pt;
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    top: 4px;
+    left: 0px;
+    overflow: hidden;
+    shape-inside: display;
+}
+p {  
+    text-align: left;
+}
+img {
+    display: block;
+    width: 202px;
+    border: 1px blue solid;
+}
