@@ -25,60 +25,76 @@
 			width: parseFloat(window.getComputedStyle(containingBlock, null).getPropertyValue("width")),
 			height: parseFloat(window.getComputedStyle(containingBlock, null).getPropertyValue("height"))
 		};
-
+		
 		if (typeof polarElement.tagName !== 'undefined') {
 			var polarElementSize = {
 				width: parseFloat(window.getComputedStyle(polarElement, null).getPropertyValue("width")),
 				height: parseFloat(window.getComputedStyle(polarElement, null).getPropertyValue("height"))
-			};
+			};			
 			if (polarElement.dataset.polarDistance !== undefined) {
-				var polarDistance = polarElement.dataset.polarDistance;
-				if (polarDistance == undefined)
-					polarDistance = "0px";
 				var polarAngle = polarElement.dataset.polarAngle;
 				if (polarAngle == undefined)
 					polarAngle = "0deg";
-				var polarAnchor = polarElement.dataset.polarAnchor;
-				if (polarAnchor == undefined)
-					polarAnchor = "center";
+				
+				var polarDistance = polarElement.dataset.polarDistance;
+				if (polarDistance == undefined)
+					polarDistance = "0px";
+				
 				var polarOrientation = polarElement.dataset.polarOrientation;
 				if (polarOrientation == undefined)
 					polarOrientation = "0deg";
 
-				console.log("distance: " + polarDistance);
-				console.log("angle: " + polarAngle);
-				console.log("anchor: " + polarAnchor);
-
+				// get polar angle value
 				polarAngle = parseFloat(polarAngle);
 
-				if (polarDistance.indexOf("%") > 0) {
-					polarDistance = (containingBlockSize.width / 2) * (parseFloat(polarDistance) / 100.0);
-				} else { // if (polarDistance.indexOf("px") > 0) {
-					polarDistance = parseFloat(polarDistance);
+				// get polar orientation value
+				var translate3d;
+//				= setOrientation(polarOrientation, polarAngle);				
+
+				// get polar distance value
+				var distanceValueList = polarDistance.split(' ');
+
+				if (distanceValueList[0].indexOf("%") > 0) {
+					distanceValueList[0] = (containingBlockSize.width / 2) * (parseFloat(distanceValueList[0]) / 100.0);
+				} else { // if (distanceValueList[0].indexOf("px") > 0) {
+					distanceValueList[0] = parseFloat(distanceValueList[0]);
 				}
-
-				var anchorPoint = getAnchorPoint(polarAnchor, containingBlockSize, polarElementSize, polarAngle, polarDistance);
-
-				console.log("x: " + anchorPoint.x + " y: " + anchorPoint.y);
 				
-				var translate3d = "translate3d(" + anchorPoint.x + "px, " + anchorPoint.y + "px, 0px)";
-
-				if (polarOrientation.indexOf("deg") > 0) {
-					translate3d = translate3d + "rotateZ("+ parseFloat(polarOrientation) +"deg)";
-				} else {
-					if (polarOrientation == "center") {
-						translate3d = translate3d + "rotateZ(" + polarAngle + "deg)";
-					} else if (polarOrientation == "counter-center") {
-						translate3d = translate3d + "rotateZ(" + (polarAngle+180) + "deg)";
+				var polarAnchor;
+				if (distanceValueList.length == 2) {
+					polarAnchor = distanceValueList[1];
+					
+					if (polarAnchor == "fit") {						
+						clipElement(containingBlock, containingBlockSize.height, polarElement, polarElementSize, polarAngle, distanceValueList[0], polarOrientation);				
 					}
+				} else {
+					polarAnchor = "center";
 				}
-								
-				polarElement.style.transform = translate3d;
-				
-				clipElement(containingBlock, containingBlockSize.height, polarElement, polarElementSize, polarAngle, polarDistance, polarOrientation);				
+
+				// anchor point is decided by polar-distance value
+				var anchorPoint = getAnchor(polarAnchor, containingBlockSize, polarElementSize, polarAngle, distanceValueList[0]);
+
+				translate3d = "translate3d(" + anchorPoint.x + "px, " + anchorPoint.y + "px, 0px)";
+
+				translate3d += setOrientation(polarOrientation, polarAngle);
+				polarElement.style.transform = translate3d;				
 			}			
 		}
     },
+	
+	setOrientation = function(orientation, angle) {
+		var rotationMat;
+		if (orientation.indexOf("deg") > 0) {
+			rotationMat = "rotateZ("+ parseFloat(orientation) +"deg)";
+		} else {
+			if (orientation == "center") {
+				rotationMat = "rotateZ(" + angle + "deg)";
+			} else if (orientation == "counter-center") {
+				rotationMat = "rotateZ(" + (angle+180) + "deg)";
+			}
+		}
+		return rotationMat;
+	},
 	clipElement = function(containingBlock, diameter, polarElement, size, polarAngle, polarDistance, polarOrientation) {
 		var clipWidth = size.height * size.width / (2*polarDistance + size.height);
 		
@@ -94,144 +110,37 @@
 		
 		var innerCircleRadius = Math.sqrt(Math.pow(size.width/2,2) + Math.pow((polarDistance-size.height/2),2));
 		var outerCircleRadius = polarDistance + size.height/2;
-		
-		containingBlock.style.background = "gray";
-		console.log("outerCircleRadius: "+(outerCircleRadius/diameter)*100);
-		containingBlock.style.clipPath = "circle("+(outerCircleRadius/diameter)*100+"% at 50% 50%)";
-		containingBlock.style.webkitClipPath = "circle("+(outerCircleRadius/diameter)*100+"% at 50% 50%)";
 	},
-	isNumberType = function(value) {
-		if (value.indexOf("%") > 0) {
-			return "%";
-		} else if (value.indexOf("px") > 0) {
-			return "px";
-		} else {
-			return false;
-		}
-	},
-	calculateAnchorPoint = function(parameter, elementSize, anchorPoint){
-		if (parameter == "center") {
-			anchorPoint.x = elementSize.width/2;
-			anchorPoint.y = elementSize.height/2;
-		} else if (parameter == "top") {
-			anchorPoint.x = elementSize.width/2;
-			anchorPoint.y = 0;
-		} else if (parameter == "bottom") {
-			anchorPoint.x = elementSize.width/2;
-			anchorPoint.y = elementSize.height;
-		} else if (parameter == "left") {
-			anchorPoint.x = 0;
-			anchorPoint.y = elementSize.height/2;
-		} else if (parameter == "right") {
-			anchorPoint.x = elementSize.width;
-			anchorPoint.y = elementSize.height/2;
-		} else {
-			if (parameter.indexOf("%") > 0) {
-				anchorPoint.x = elementSize.width * (parseFloat(parameter) / 100.0);
-				anchorPoint.y = elementSize.height * (parseFloat(parameter) / 100.0);
-			} else if (parameter.indexOf("px") > 0) {
-				anchorPoint.x = parseFloat(parameter);
-				anchorPoint.y = parseFloat(parameter);
-			}
-		}
-	},
-	calculateAnchorPointX = function(edge, value, elementSize, anchorPoint){
-		if (edge == "center") {
-			anchorPoint.x = elementSize.width/2;
-		} else if (edge == "left") {
-			if (value.indexOf("%") > 0) {
-				anchorPoint.x = elementSize.width * (parseFloat(value) / 100.0);
-			} else if (value.indexOf("px") > 0) {
-				anchorPoint.x = parseFloat(value);
-			}
-		} else if (edge == "right") {
-			if (value.indexOf("%") > 0) {
-				anchorPoint.x = elementSize.width * (1 - (parseFloat(value) / 100.0));
-			} else if (value.indexOf("px") > 0) {
-				anchorPoint.x = elementSize.width - parseFloat(value);
-			}
-		}
-	},
-	calculateAnchorPointY = function(edge, value, elementSize, anchorPoint){
-		if (edge == "center") {
-			anchorPoint.y = elementSize.height/2;
-		} else if (edge == "top") {
-			if (value.indexOf("%") > 0) {
-				anchorPoint.y = elementSize.height * (parseFloat(value) / 100.0);
-			} else if (value.indexOf("px") > 0) {
-				anchorPoint.y = parseFloat(value);
-			}
-		} else if (edge == "bottom") {
-			if (value.indexOf("%") > 0) {
-				anchorPoint.y = elementSize.height * (1 - (parseFloat(value) / 100.0));
-			} else if (value.indexOf("px") > 0) {
-				anchorPoint.y = elementSize.height - parseFloat(value);
-			}
-		}
-	},
-	getAnchorPoint = function(valueString, containingBlockSize, elementSize, polarAngle, polarDistance) {
-		var valueList = valueString.split(' ');
-
+	getAnchor = function(valueString, containingBlockSize, elementSize, polarAngle, polarDistance) {
 		var anchorPoint = {};
 
-		// Reference from 'background-position'
-        switch (valueList.length) {
-            case 0:
-                calculateAnchorPoint("center", elementSize, anchorPoint);
+		// options in polar-distance: center | fit | inner
+        switch (valueString) {
+            case "center":
+                anchorPoint.x = elementSize.width/2;
+				anchorPoint.y = elementSize.height/2;
+				anchorPoint.dist = polarDistance;
                 break;
-            case 1:
-				calculateAnchorPoint(valueList[0], elementSize, anchorPoint);
+            case "inner":	// need to be modified
+				anchorPoint.x = elementSize.width/2;
+				anchorPoint.y = elementSize.height/2;
+				anchorPoint.dist = polarDistance;
                 break;
-            case 2:
-				if ((valueList[0].indexOf("%") > 0) || (valueList[0].indexOf("px") > 0)) {
-					if ((valueList[1].indexOf("%") > 0) || (valueList[1].indexOf("px") > 0)) {
-						calculateAnchorPointX("left", valueList[0], elementSize, anchorPoint);
-						calculateAnchorPointY("top", valueList[1], elementSize, anchorPoint);
-					} else {
-						calculateAnchorPointX("left", valueList[0], elementSize, anchorPoint);
-						calculateAnchorPointY(valueList[1], "0%", elementSize, anchorPoint);
-					}					
-				} else {
-					if ((valueList[1].indexOf("%") > 0) || (valueList[1].indexOf("px") > 0)) {
-						calculateAnchorPointX(valueList[0], valueList[1], elementSize, anchorPoint);
-						calculateAnchorPointY("center", "0%", elementSize, anchorPoint);
-					} else {
-						calculateAnchorPointX(valueList[0], "0%", elementSize, anchorPoint);
-						calculateAnchorPointY(valueList[1], "0%", elementSize, anchorPoint);
-					}
-				}
+            case "fit":
+				anchorPoint.x = elementSize.width/2;
+				anchorPoint.y = elementSize.width/2;
+				anchorPoint.dist = polarDistance - elementSize.height/2;
                 break;
-            case 3:
-				if ((valueList[0].indexOf("%") > 0) || (valueList[0].indexOf("px") > 0)) {
-					calculateAnchorPointX("left", valueList[0], elementSize, anchorPoint);
-					calculateAnchorPointY(valueList[1], valueList[2], elementSize, anchorPoint);
-				} else {
-					if ((valueList[1].indexOf("%") > 0) || (valueList[1].indexOf("px") > 0)) {
-						calculateAnchorPointX(valueList[0], valueList[1], elementSize, anchorPoint);
-						if ((valueList[2].indexOf("%") > 0) || (valueList[2].indexOf("px") > 0)) {
-							calculateAnchorPointY("top", valueList[2], elementSize, anchorPoint);
-						} else {
-							calculateAnchorPointY(valueList[2], "0%", elementSize, anchorPoint);
-						}
-					} else {
-						calculateAnchorPointX(valueList[0], "0%", elementSize, anchorPoint);
-						calculateAnchorPointY(valueList[1], valueList[2], elementSize, anchorPoint);
-					}
-				}
-                break;
-			case 4:
-				//for the horizontal value
-				calculateAnchorPointX(valueList[0], valueList[1], elementSize, anchorPoint);
-
-				//for the vertical value
-				calculateAnchorPointY(valueList[2], valueList[3], elementSize, anchorPoint);
-
+			default: 
+				anchorPoint.x = elementSize.width/2;
+				anchorPoint.y = elementSize.height/2;
+				anchorPoint.dist = polarDistance;
                 break;
         }
 
 		var point = {
-			x: Math.sin(Math.PI / 180 * polarAngle) * polarDistance + (containingBlockSize.width / 2) - anchorPoint.x,
-			y: -Math.cos(Math.PI / 180 * polarAngle) * polarDistance + (containingBlockSize.height / 2) - anchorPoint.y
+			x: Math.sin(Math.PI / 180 * polarAngle) * anchorPoint.dist + (containingBlockSize.width / 2) - anchorPoint.x,
+			y: -Math.cos(Math.PI / 180 * polarAngle) * anchorPoint.dist + (containingBlockSize.height / 2) - anchorPoint.y
 		};
 
 		return point;
@@ -241,13 +150,6 @@
         for (var i = 0; i < polarOrientation.length; i++) {
             if (document.querySelector(polarOrientation[i].selector)) {
                 document.querySelector(polarOrientation[i].selector).dataset.polarOrientation = polarOrientation[i].value;
-			}
-        }
-	
-		var polarAnchor = jRound.getSelectors("polar-anchor", "*");
-        for (var i = 0; i < polarAnchor.length; i++) {
-            if (document.querySelector(polarAnchor[i].selector)) {
-                document.querySelector(polarAnchor[i].selector).dataset.polarAnchor = polarAnchor[i].value;
 			}
         }
         var polarDistance = jRound.getSelectors("polar-distance", "*");
