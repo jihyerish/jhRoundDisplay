@@ -149,6 +149,7 @@ body {
   polar-angle: 195deg;
   polar-distance: 100% fit;
 	polar-orientation: counter-center;
-	background-image: url(assets/like.svg);
+	content: url(assets/like.svg);
+	background-color: white;
 	opacity: 0.9;
 }
