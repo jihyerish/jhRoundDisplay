@@ -14,7 +14,14 @@
 @font-face {
 	font-family: 'RobotoCondensed Regular';
 	font-style: normal;
-	src: url('fonts/RobotoCondensed-Regular.ttf') format('truetype');
+	src: url('fonts/RobotoCondensed-Regular.ttf.ttf') format('truetype');
+}
+
+/*image font*/
+@font-face {
+	font-family: 'Line Icon';
+	font-style: normal;
+	src: url('fonts/Simple-Line-Icons.ttf') format('truetype');
 }
 
 body {
@@ -31,7 +38,7 @@ body {
 	position: absolute;
 	content: url(assets/wine.jpg);
 	width: 400px;
-    height: 200px;
+  height: 200px;
 	top: 0px;
 }
 #content_text{
@@ -123,25 +130,25 @@ body {
 }
 #item5 {
 	position: polar;
-    polar-angle: 165deg;
-    polar-distance: 100% fit;
+  polar-angle: 165deg;
+  polar-distance: 100% fit;
 	polar-orientation: counter-center;
 	background-image: url(assets/video.png);
 	opacity: 0.9;
 }
 #item6 {
 	position: polar;
-    polar-angle: 180deg;
-    polar-distance: 100% fit;
+  polar-angle: 180deg;
+  polar-distance: 100% fit;
 	polar-orientation: counter-center;
 	background-image: url(assets/picture.png);
 	opacity: 0.9;
 }
 #item7 {
 	position: polar;
-    polar-angle: 195deg;
-    polar-distance: 100% fit;
+  polar-angle: 195deg;
+  polar-distance: 100% fit;
 	polar-orientation: counter-center;
-	background-image: url(assets/like.png);
+	background-image: url(assets/like.svg);
 	opacity: 0.9;
 }
