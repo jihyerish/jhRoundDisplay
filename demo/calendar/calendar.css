@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+	padding: 0;
+	background-color: black;
+}
+#layout {
+	margin: 0;
+	padding: 0;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: DarkMagenta;
+    -webkit-clip-path: circle(50% at 50% 50%);
+}
+#today{
+    position: absolute;
+	position: polar;
+    background-color: #505050;
+    polar-angle: 0deg;
+    polar-distance: 0%;
+    width: 220px;
+    height: 220px;
+	border-radius: 50%;
+    top: 0px;
+	margin: 0;
+	padding: 0;
+}
+#text_date {
+	position: absolute;
+	position: polar;
+    polar-angle: 0deg;
+    polar-distance: 50%;
+	font-size: 35px;
+	font-style: bold;
+	color: white;
+}
+#text_day {
+	position: absolute;
+	position: polar;
+    polar-angle: 180deg;
+    polar-distance: 10%;
+	font-size: 25px;
+	color: white;
+}
+#up {
+	position: absolute;
+	position: polar;
+    polar-angle: 0deg;
+    polar-distance: 80%;
+	content: url(assets/up_arrow.svg);
+}
+#down {
+	position: absolute;
+	position: polar;
+    polar-angle: 180deg;
+    polar-distance: 80%;
+	content: url(assets/down_arrow.svg);
+}
+.date {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background-position: 0px 0px;
+    text-align: center;
+	color: white;
+    font-size: 15px;
+}
+#cursor {
+	position: absolute;
+	position: polar;
+    polar-angle: 280deg;
+    polar-distance: 85%;
+	width: 25px;
+    height: 25px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+	background-color: #7FFFD4;
+	opacity: 0.5;
+	border-radius: 50%;
+}
+#month {
+	position: absolute;
+	position: polar;
+    polar-angle: 360deg;
+    polar-distance: 85%;
+	color: #FFF5EE;
+	font-size: 20px;
+}
+#item1 {
+    position: polar;
+    polar-angle: 30deg;
+    polar-distance: 85%;
+}
+#item2 {
+    position: polar;
+    polar-angle: 40deg;
+    polar-distance: 85%;
+}
+#item3 {
+    position: polar;
+    polar-angle: 50deg;
+    polar-distance: 85%;
+}
+#item4 {
+    position: polar;
+    polar-angle: 60deg;
+    polar-distance: 85%;
+}
+#item5 {
+    position: polar;
+    polar-angle: 70deg;
+    polar-distance: 85%;
+}
+#item6 {
+    position: polar;
+    polar-angle: 80deg;
+    polar-distance: 85%;
+}
+#item7 {
+    position: polar;
+    polar-angle: 90deg;
+    polar-distance: 85%;
+}
+#item8 {
+    position: polar;
+    polar-angle: 100deg;
+    polar-distance: 85%;
+}
+#item9 {
+    position: polar;
+    polar-angle: 110deg;
+    polar-distance: 85%;
+}
+#item10 {
+    position: polar;
+    polar-angle: 120deg;
+    polar-distance: 85%;
+}
+#item11 {
+    position: polar;
+    polar-angle: 130deg;
+    polar-distance: 85%;
+}
+#item12 {
+    position: polar;
+    polar-angle: 140deg;
+    polar-distance: 85%;
+}
+#item13 {
+    position: polar;
+    polar-angle: 150deg;
+    polar-distance: 85%;
+}
+#item14 {
+    position: polar;
+    polar-angle: 160deg;
+    polar-distance: 85%;
+}#item15 {
+    position: polar;
+    polar-angle: 170deg;
+    polar-distance: 85%;
+}
+#item16 {
+    position: polar;
+    polar-angle: 180deg;
+    polar-distance: 85%;
+}
+#item17 {
+    position: polar;
+    polar-angle: 190deg;
+    polar-distance: 85%;
+}
+#item18 {
+    position: polar;
+    polar-angle: 200deg;
+    polar-distance: 85%;
+}
+#item19 {
+    position: polar;
+    polar-angle: 210deg;
+    polar-distance: 85%;
+}
+#item20 {
+    position: polar;
+    polar-angle: 220deg;
+    polar-distance: 85%;
+}
+#item21 {
+    position: polar;
+    polar-angle: 230deg;
+    polar-distance: 85%;
+}
+#item22 {
+    position: polar;
+    polar-angle: 240deg;
+    polar-distance: 85%;
+}
+#item23 {
+    position: polar;
+    polar-angle: 250deg;
+    polar-distance: 85%;
+}
+#item24 {
+    position: polar;
+    polar-angle: 260deg;
+    polar-distance: 85%;
+}#item25 {
+    position: polar;
+    polar-angle: 270deg;
+    polar-distance: 85%;
+}
+#item26 {
+    position: polar;
+    polar-angle: 280deg;
+    polar-distance: 85%;
+}
+#item27 {
+    position: polar;
+    polar-angle: 290deg;
+    polar-distance: 85%;
+}
+#item28 {
+    position: polar;
+    polar-angle: 300deg;
+    polar-distance: 85%;
+}
+#item29 {
+    position: polar;
+    polar-angle: 310deg;
+    polar-distance: 85%;
+}
+#item30 {
+    position: polar;
+    polar-angle: 320deg;
+    polar-distance: 85%;
+}
+#item31 {
+    position: polar;
+    polar-angle: 330deg;
+    polar-distance: 85%;
+}
