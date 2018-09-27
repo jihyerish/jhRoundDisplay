@@ -3,13 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS Extension to Support a Round Display</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+    <style type="text/css" media="screen">
+        body {
+          background: white;
+          font-family: Roboto;
+        }
+        h2 {
+          font-size: 20px;
+        }
+        img {
+          width: 250px;
+          height: 250px;
+        }
+        .demo_table {
+          display: flex;
+          flex-flow: row;
+        }
+
+        .demo {
+          display: flex;
+          flex-flow: column wrap;
+          text-align: center;
+          margin-inline-end: 1em;
+        }
+    </style>
 </head>
 <body>
-    <h2>CSS Extension to Support a Round Display</h2>
-    1. <a href="./device-radius/index.html">device-radius property</a>: Extension of Media Queries Level 4<br/>
-    2. <a href="./shape-inside/index.html">shape-inside: display</a>: Extension of CSS Shapes Level 2<br/>
-    3. <a href="./border-boundary/index.html">border-boundary</a>: Extension of CSS Backgrounds and Borders Module Level 3<br/>
-    4. <a href="./polar/index.html">polar-distance property</a>: CSS Positioned Layout Module Level 3<br/><br/>
+    <h2>CSS Round Display Demos</h2>
+    <div class="demo_table">
+      <div class="demo">
+        <img class="demo_image" src="img/calendar.png">
+        <a href="calendar/index.html">Calendar App</a>
+      </div>
+      <div class="demo">
+        <img class="demo_image" src="img/facebook.png">
+        <a href="facebook/index.html">Facebook App</a>
+      </div>
+      <div class="demo">
+        <img class="demo_image" src="img/weather.png">
+        <a href="weather/index.html">Weather App</a>
+      </div>
+    </div>
     <h4>Copyright 2015 LG Electronics Inc.</h4>
 </body>
 </html>
