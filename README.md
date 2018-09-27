@@ -1,4 +1,4 @@
-﻿# jhRoundDisplay
+﻿# CSS Round Display
 jhRoundDisplay is a JavaScript polyfill to support [CSS Extension for a round display](http://dev.w3.org/csswg/css-round-display) that extends existing CSS features in order to help web authors to build a web page suitable for a round display. To understand proposed features, refer to the [specification](http://dev.w3.org/csswg/css-round-display/) and see the [demo page](http://jihyerish.github.io/jhRoundDisplay/demo/index.html). jRound supports the current release of Chrome and may not work in other browsers. 
 
 
